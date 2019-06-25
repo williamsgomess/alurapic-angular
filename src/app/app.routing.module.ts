@@ -8,11 +8,11 @@ import { PhotoFormComponent } from './photos/photo-form/photo-form.component';
 
 const routes: Routes = [
   {
-    path: 'user/:username',
+    path: 'user/:userName',
     component: PhotoListComponent,
     resolve: {
       photos: PhotoListResolver
-    },
+    }
   },
   { path: 'p/add', component: PhotoFormComponent },
   { path: '**', component: NotFoundComponent }
@@ -22,4 +22,4 @@ const routes: Routes = [
   imports: [ RouterModule.forRoot(routes) ],
   exports: [ RouterModule ]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
