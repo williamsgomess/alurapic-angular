@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class LoadButtonComponent implements OnInit {
 
-  @Input() hasMore = false;
+  @Input() hasMore: boolean = false;
 
   constructor() { }
 
