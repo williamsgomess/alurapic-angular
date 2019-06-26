@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -19,41 +18,11 @@ import { DarkenOnHoverModule } from '../../shared/directives/darken-on-hover/dar
         FilterByDescription,
         SearchComponent
     ],
-    imports: [
+    imports: [ 
         CommonModule,
         PhotoModule,
-        CardModule,
+        CardModule, 
         DarkenOnHoverModule
     ]
 })
 export class PhotoListModule {}
-=======
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-import { PhotoListComponent } from './photo-list.component';
-import { PhotosComponent } from './photos/photos.component';
-import { LoadButtonComponent } from './load-button/load-button.component';
-import { FilterByDescription } from './filter-by-description.pipe';
-import { PhotoModule } from '../photo/photo.module';
-import { CardModule } from '../../shared/components/card/card.module';
-import { SearchComponent } from './search/search.component';
-import { DarkenOnHoverModule } from '../../shared/directives/darken-on-hover/darken-on-hover.module';
-
-@NgModule({
-    declarations: [
-        PhotoListComponent,
-        PhotosComponent,
-        LoadButtonComponent,
-        FilterByDescription,
-        SearchComponent
-    ],
-    imports: [
-        CommonModule,
-        PhotoModule,
-        CardModule,
-        DarkenOnHoverModule
-    ]
-})
-export class PhotoListModule {}
->>>>>>> d18d10e4c4bee9c93c456250f87c58913b8f50d3
