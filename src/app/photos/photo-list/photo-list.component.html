@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <ap-search
     (onTyping)="filter = $event" [value]="filter">
 </ap-search>
@@ -10,3 +11,17 @@
     (click)="load()"
     [hasMore]="hasMore">
 </ap-load-button>
+=======
+<ap-search
+    (onTyping)="filter = $event" [value]="filter">
+</ap-search>
+
+<ap-photos
+    [photos]="photos | filterByDescription: filter">
+</ap-photos>
+
+<ap-load-button
+    (click)="load()"
+    [hasMore]="hasMore">
+</ap-load-button>
+>>>>>>> d18d10e4c4bee9c93c456250f87c58913b8f50d3
