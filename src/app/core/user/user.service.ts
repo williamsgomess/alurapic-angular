@@ -1,47 +1,49 @@
 import { Injectable } from '@angular/core';
-import { TokenService } from '../token/token.service';
-import { BehaviorSubject } from 'rxjs';
-import { User } from './user';
+
 import * as jtw_decode from 'jwt-decode';
 
-@Injectable({ providedIn: 'root'})
-export class UserService { 
+import { BehaviorSubject } from 'rxjs';
 
-    private userSubject = new BehaviorSubject<User>(null);
-    private userName: string;
+import { TokenService } from '../token/token.service';
 
-    constructor(private tokenService: TokenService) { 
+import { User } from './user';
 
-        this.tokenService.hasToken() && 
-            this.decodeAndNotify();
-    }
+@Injectable({ providedIn: 'root' })
+export class UserService {
 
-    setToken(token: string) {
-        this.tokenService.setToken(token);
-        this.decodeAndNotify();
-    }
+  private userSubject = new BehaviorSubject<User>(null);
+  private userName: string;
 
-    getUser() {
-        return this.userSubject.asObservable();
-    }
+  constructor(private tokenService: TokenService) {
+    this.tokenService.hasToken() && this.decodeAndNotify();
+  }
 
-    private decodeAndNotify() {
-        const token = this.tokenService.getToken();
-        const user = jtw_decode(token) as User;
-        this.userName = user.name;
-        this.userSubject.next(user);
-    }
+  setToken(token: string) {
+    this.tokenService.setToken(token);
+    this.decodeAndNotify();
+  }
 
-    logout() {
-        this.tokenService.removeToken();
-        this.userSubject.next(null);
-    }
+  getUser() {
+    return this.userSubject.asObservable();
+  }
 
-    isLogged() {
-        return this.tokenService.hasToken();
-    }
+  private decodeAndNotify() {
+    const token = this.tokenService.getToken();
+    const user = jtw_decode(token) as User;
+    this.userName = user.name;
+    this.userSubject.next(user);
+  }
 
-    getUserName() {
-        return this.userName;
-    }
+  logout() {
+    this.tokenService.removeToken();
+    this.userSubject.next(null);
+  }
+
+  isLogged() {
+    return this.tokenService.hasToken();
+  }
+
+  getUserName() {
+    return this.userName;
+  }
 }
